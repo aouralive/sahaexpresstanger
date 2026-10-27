@@ -119,6 +119,37 @@ NAV = {"fr": ("Accueil", "Pharmacie de garde la nuit", "Courses et colis"),
        "ar": ("الرئيسية", "صيدلية الحراسة ليلاً", "المشتريات والطرود"),
        "en": ("Home", "Night pharmacy guide", "Groceries and parcels")}
 
+PSLUG = "confidentialite"
+PRIVACY = {
+"fr": dict(t="Politique de confidentialité", nav="Confidentialité",
+ d="Comment Saha Express utilise et protège les informations que vous nous envoyez pour une livraison à Tanger.",
+ lead="Saha Express est un service de livraison à Tanger. Cette page explique quelles informations nous recevons quand vous passez commande, pourquoi, et comment nous les protégeons, conformément à la loi marocaine n° 09-08 sur la protection des données personnelles.",
+ secs=[("Les informations que nous recevons","Quand vous commandez sur WhatsApp ou par téléphone, vous nous envoyez votre prénom, votre numéro de téléphone, votre quartier et votre adresse, et parfois une photo de votre ordonnance ou une remarque. Ce site ne vous demande aucun compte et n'enregistre pas vos commandes : le formulaire prépare simplement un message WhatsApp que vous choisissez d'envoyer."),
+       ("Pourquoi nous les utilisons","Uniquement pour réaliser votre livraison : acheter les produits demandés, trouver votre adresse et vous contacter si nécessaire. Nous ne les utilisons pas pour de la publicité et nous ne les vendons à personne."),
+       ("Avec qui elles sont partagées","Votre ordonnance est montrée au pharmacien uniquement pour délivrer les médicaments. Le livreur voit votre adresse et votre numéro pour vous livrer. Les messages passent par WhatsApp, un service de Meta qui applique sa propre politique de confidentialité."),
+       ("Combien de temps nous les gardons","Nous gardons ces informations seulement le temps nécessaire pour terminer la livraison et traiter une éventuelle réclamation. Vous pouvez nous demander à tout moment de supprimer nos échanges et vos photos."),
+       ("Le site web","Ce site n'utilise pas de cookies publicitaires ni de suivi. Il est hébergé par GitHub Pages et charge des polices de Google Fonts ; ces services peuvent recevoir des données techniques comme votre adresse IP pour afficher les pages."),
+       ("Vos droits","Selon la loi 09-08, vous pouvez demander l'accès à vos données, leur correction ou leur suppression, et vous opposer à leur utilisation. Écrivez-nous sur WhatsApp ou appelez-nous. Vous pouvez aussi contacter la CNDP (Commission nationale de contrôle de la protection des données à caractère personnel).")]),
+"ar": dict(t="سياسة الخصوصية", nav="الخصوصية",
+ d="كيف تستعمل Saha Express المعلومات التي ترسلها لنا من أجل التوصيل في طنجة، وكيف نحميها.",
+ lead="Saha Express خدمة توصيل في طنجة. توضح هذه الصفحة المعلومات التي نتلقاها عند طلبك، ولماذا، وكيف نحميها، وفقاً للقانون المغربي رقم 09-08 المتعلق بحماية المعطيات الشخصية.",
+ secs=[("المعلومات التي نتلقاها","عندما تطلب عبر واتساب أو الهاتف، ترسل لنا اسمك ورقم هاتفك وحيّك وعنوانك، وأحياناً صورة الوصفة الطبية أو ملاحظة. هذا الموقع لا يطلب منك إنشاء حساب ولا يحفظ طلباتك: الاستمارة تجهّز فقط رسالة واتساب تختار أنت إرسالها."),
+       ("لماذا نستعملها","فقط لإنجاز التوصيل: شراء ما طلبته، والوصول إلى عنوانك، والاتصال بك عند الحاجة. لا نستعملها للإشهار ولا نبيعها لأي أحد."),
+       ("مع من نشاركها","تُعرض الوصفة على الصيدلي فقط من أجل صرف الدواء. يرى الموزع عنوانك ورقمك لإيصال الطلب. تمر الرسائل عبر واتساب، وهي خدمة تابعة لشركة Meta ولها سياسة خصوصية خاصة بها."),
+       ("مدة الاحتفاظ","نحتفظ بهذه المعلومات فقط المدة اللازمة لإتمام التوصيل ومعالجة أي شكاية محتملة. يمكنك أن تطلب منا في أي وقت حذف محادثاتنا وصورك."),
+       ("الموقع الإلكتروني","لا يستعمل هذا الموقع ملفات تعريف الارتباط الإشهارية ولا أدوات التتبع. يستضيفه GitHub Pages ويحمّل خطوطاً من Google Fonts، وقد تتلقى هذه الخدمات معلومات تقنية مثل عنوان IP لعرض الصفحات."),
+       ("حقوقك","وفق القانون 09-08، يمكنك طلب الاطلاع على معطياتك أو تصحيحها أو حذفها، والاعتراض على استعمالها. راسلنا على واتساب أو اتصل بنا. ويمكنك أيضاً التواصل مع اللجنة الوطنية لمراقبة حماية المعطيات ذات الطابع الشخصي (CNDP).")]),
+"en": dict(t="Privacy policy", nav="Privacy",
+ d="How Saha Express uses and protects the information you send us for a delivery in Tangier.",
+ lead="Saha Express is a delivery service in Tangier. This page explains what information we receive when you order, why, and how we protect it, in line with Moroccan Law No. 09-08 on the protection of personal data.",
+ secs=[("Information we receive","When you order on WhatsApp or by phone, you send us your first name, phone number, neighbourhood and address, and sometimes a photo of your prescription or a note. This website does not ask you to create an account and does not store your orders: the form only prepares a WhatsApp message that you choose to send."),
+       ("Why we use it","Only to complete your delivery: buy what you asked for, find your address and contact you if needed. We do not use it for advertising and we never sell it."),
+       ("Who it is shared with","Your prescription is shown to the pharmacist only so the medicine can be dispensed. The rider sees your address and number to deliver. Messages go through WhatsApp, a Meta service with its own privacy policy."),
+       ("How long we keep it","We keep this information only as long as needed to complete the delivery and handle any complaint. You can ask us at any time to delete our conversation and your photos."),
+       ("This website","This site uses no advertising cookies or tracking. It is hosted on GitHub Pages and loads fonts from Google Fonts; these services may receive technical data such as your IP address to show the pages."),
+       ("Your rights","Under Law 09-08 you can ask to access, correct or delete your data, and object to its use. Message us on WhatsApp or call us. You can also contact the CNDP, Morocco's data protection authority.")]),
+}
+
 GSLUG = {"fr": "pharmacie-de-garde-tanger-nuit", "ar": "pharmacie-de-garde-tanger-nuit", "en": "pharmacie-de-garde-tanger-nuit"}
 
 CSS = """:root{--bg:#f4f7fb;--card:#fff;--ink:#0b1b33;--muted:#5a6b82;--line:#e3e9f2;--navy:#0a2342;--navy2:#123a6b;--g:#12b886;--g2:#0ca678;--gl:#e7f8f1;--wa:#25d366;
@@ -220,7 +251,7 @@ def page(lang, rel, title, desc, body, schema):
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"><style>{CSS}</style><script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script></head><body>
 <header><div class="w nav"><a class="logo" href="{home}"><i>🛵</i><span>Saha<b>Express</b></span></a><div class="nav-r"><nav class="langs">{langs}</nav><a class="ncall" href="tel:{TEL}">📞 {TEL_SHOW}</a></div></div></header>
 <main class="w">{body}</main>
-<footer><div class="w"><nav class="fnav"><a href="{root}{L['path']}">{e(NAV[lang][0])}</a><a href="{root}{L['path']}{GSLUG[lang]}/">{e(NAV[lang][1])}</a><a href="{root}{L['path']}{SSLUG}/">{e(NAV[lang][2])}</a></nav><b>{e(L['foot'])}</b><br>WhatsApp / Tel: <a href="tel:{TEL}" dir="ltr">{TEL_SHOW}</a><br>{e(L['legal'])}<br>© Saha Express</div></footer>
+<footer><div class="w"><nav class="fnav"><a href="{root}{L['path']}">{e(NAV[lang][0])}</a><a href="{root}{L['path']}{GSLUG[lang]}/">{e(NAV[lang][1])}</a><a href="{root}{L['path']}{SSLUG}/">{e(NAV[lang][2])}</a><a href="{root}{L['path']}{PSLUG}/">{e(PRIVACY[lang]['nav'])}</a></nav><b>{e(L['foot'])}</b><br>WhatsApp / Tel: <a href="tel:{TEL}" dir="ltr">{TEL_SHOW}</a><br>{e(L['legal'])}<br>© Saha Express</div></footer>
 <a class="float" href="https://wa.me/{WA}?text={quote(L['wa_hello'] + SRC)}" aria-label="WhatsApp">{WAICON}</a></body></html>"""
 
 def business(lang):
@@ -279,6 +310,12 @@ def service(lang):
            "areaServed": {"@type": "City", "name": "Tanger"}, "provider": {"@type": "LocalBusiness", "name": "Saha Express", "telephone": TEL, "url": URL + "/"}}
     return page(lang, SSLUG + "/", S["t"] + " | Saha Express", S["d"], body, sch)
 
+def privacy(lang):
+    L, P = T[lang], PRIVACY[lang]
+    body = f'<article class="post"><h1>{e(P["t"])}</h1><p class="lead">{e(P["lead"])}</p>' + "".join(f"<h2>{e(h)}</h2><p>{e(p)}</p>" for h, p in P["secs"]) + \
+           f'<p><a class="btn wa" href="https://wa.me/{WA}">💬 WhatsApp</a> &nbsp; <a href="tel:{TEL}" dir="ltr">{TEL_SHOW}</a></p></article>'
+    return page(lang, PSLUG + "/", P["t"] + " | Saha Express", P["d"], body, {"@context": "https://schema.org", "@type": "WebPage", "name": P["t"], "inLanguage": lang})
+
 if OUT.exists(): shutil.rmtree(OUT)
 urls = []
 for lang, L in T.items():
@@ -288,6 +325,8 @@ for lang, L in T.items():
     (g / "index.html").write_text(guide(lang), encoding="utf-8"); urls.append(f"{URL}/{L['path']}{GSLUG[lang]}/")
     sv = d / SSLUG; sv.mkdir(parents=True, exist_ok=True)
     (sv / "index.html").write_text(service(lang), encoding="utf-8"); urls.append(f"{URL}/{L['path']}{SSLUG}/")
+    pv = d / PSLUG; pv.mkdir(parents=True, exist_ok=True)
+    (pv / "index.html").write_text(privacy(lang), encoding="utf-8"); urls.append(f"{URL}/{L['path']}{PSLUG}/")
 shutil.copytree(Path(__file__).parent / "img", OUT / "img")
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {URL}/sitemap.xml\n")
 import datetime as _dt
