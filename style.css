@@ -78,3 +78,5 @@ footer{background:var(--navy);color:#b9c7dc;padding:34px 0 110px;font-size:14px;
 .st-ic{height:220px;display:grid;place-items:center;font-size:84px;background:linear-gradient(135deg,var(--gl),#d5f3e7)}
 .st-b{padding:20px 22px 24px}.st::before{z-index:2;color:#ffffffcc;text-shadow:0 2px 10px #0006;top:10px}
 @media (max-width:760px){.hero-img{aspect-ratio:4/4.4;object-position:center 55%}.visual .card3{position:relative;inset:auto;width:auto;margin:-60px 14px 0}.hero{padding-bottom:40px}}
+
+.fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-bottom:14px}.fnav a{color:#cfe0f5;text-decoration:none;font-weight:600}

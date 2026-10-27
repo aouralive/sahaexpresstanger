@@ -1,0 +1,19 @@
+name: IndexNow (tell Bing & Yandex about pages)
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**"]
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for GitHub Pages to publish
+        run: sleep 90
+      - name: Send all sitemap URLs to IndexNow
+        run: |
+          KEY=$(ls docs/*.txt | grep -v robots | head -1 | xargs basename | sed 's/.txt$//')
+          URLS=$(grep -o '<loc>[^<]*' docs/sitemap.xml | sed 's/<loc>//' | python3 -c "import sys,json;print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))")
+          BODY=$(python3 -c "import json,sys;print(json.dumps({'host':'www.sahaexpresstanger.com','key':'$KEY','keyLocation':'https://www.sahaexpresstanger.com/$KEY.txt','urlList':json.loads(sys.argv[1])}))" "$URLS")
+          curl -sS -o /dev/null -w "IndexNow HTTP %{http_code}\n" -X POST https://api.indexnow.org/indexnow -H "Content-Type: application/json; charset=utf-8" -d "$BODY"

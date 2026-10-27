@@ -5,6 +5,7 @@ from urllib.parse import quote
 from pathlib import Path
 OUT = Path(__file__).parent / "docs"
 URL = "https://www.sahaexpresstanger.com"
+INDEXNOW_KEY = "5a7e2c9d41b84f0f9c3e6a1b8d2f7e40"
 WA = "212689302303"; SRC = "\n\n🌐 sahaexpresstanger.com"; TEL = "+212689302303"; TEL_SHOW = "06 89 30 23 03"
 e = html.escape
 ZONES = ["Malabata", "Branes", "Iberia", "Californie", "Najma", "Jbel Kbir", "Marshan", "Médina", "Kasbah", "Centre-ville",
@@ -90,6 +91,34 @@ GUIDE = {
  ("What to prepare","A clear photo of the prescription, your address with a landmark (mosque, café, school…), and cash to pay for the medicine and delivery on arrival."),
  ("Medical emergency","Delivery does not replace emergency services. In a serious emergency, call 15 or 150 immediately or go to the nearest hospital emergency room.")],
 }
+SSLUG = "livraison-courses-repas-colis-tanger"
+SERVICE = {
+"fr": dict(t="Livraison de courses, repas, documents et colis à Tanger",
+ d="Saha Express livre aussi vos courses, repas, documents et petits colis partout à Tanger, jour et nuit. Commande simple sur WhatsApp, à partir de 20 DH.",
+ lead="La pharmacie n'est pas notre seul service. Vous avez oublié quelque chose au supermarché, vous voulez un repas d'un restaurant qui ne livre pas, ou vous devez envoyer un document à l'autre bout de Tanger ? Envoyez-nous un message : un livreur s'en occupe.",
+ secs=[("Ce que nous livrons","Courses de l'épicerie ou du supermarché, repas de restaurants et snacks, documents et dossiers administratifs, clés, petits colis et cadeaux, produits bébé et para-pharmacie. Si cela tient dans notre caisse de livraison et que c'est légal, nous pouvons le transporter."),
+       ("Comment commander","Écrivez sur WhatsApp ce que vous voulez et où il faut le prendre : le nom du magasin ou l'adresse, puis votre adresse avec un repère. Si nous devons acheter pour vous, nous vous confirmons le prix avant d'acheter. Vous payez à la réception, en espèces."),
+       ("Prix et délais","La livraison commence à 20 DH dans Tanger. Le prix final dépend de la distance et nous vous l'annonçons avant de partir. La plupart des livraisons arrivent en moins d'une heure ; la nuit, comptez parfois un peu plus."),
+       ("Quartiers desservis","Tout Tanger : Malabata, Branes, Iberia, Californie, Najma, Jbel Kbir, Marshan, Médina, Mesnana, Beni Makada, Casabarata, Boukhalef, Gzenaya et tous les autres quartiers.")]),
+"ar": dict(t="توصيل المشتريات والوجبات والوثائق والطرود في طنجة",
+ d="Saha Express توصل أيضاً مشترياتك ووجباتك ووثائقك وطرودك الصغيرة في كل طنجة، ليلاً ونهاراً. اطلب بسهولة على واتساب، ابتداءً من 20 درهم.",
+ lead="الصيدلية ليست خدمتنا الوحيدة. نسيت شيئاً في السوق، أو تريد وجبة من مطعم لا يوصل، أو تحتاج إرسال وثيقة إلى الطرف الآخر من طنجة؟ أرسل لنا رسالة، وموزعنا يتكفل بالباقي.",
+ secs=[("ماذا نوصل؟","مشتريات البقالة والسوق، وجبات المطاعم، الوثائق والملفات الإدارية، المفاتيح، الطرود الصغيرة والهدايا، منتجات الأطفال وشبه الصيدلية. إذا كان يدخل في صندوق التوصيل وكان قانونياً، يمكننا نقله."),
+       ("كيف تطلب؟","اكتب على واتساب ما تريده ومن أين نأخذه: اسم المحل أو العنوان، ثم عنوانك مع علامة قريبة. إذا كان علينا الشراء لك، نؤكد لك الثمن قبل الشراء، وتدفع نقداً عند الاستلام."),
+       ("الثمن والمدة","يبدأ التوصيل من 20 درهم داخل طنجة. الثمن النهائي حسب المسافة ونخبرك به قبل الانطلاق. أغلب الطلبات تصل في أقل من ساعة، وفي الليل قد تأخذ وقتاً أطول قليلاً."),
+       ("الأحياء","كل طنجة: مالاباطا، البرانص، إيبيريا، كاليفورنيا، النجمة، جبل الكبير، مرشان، المدينة القديمة، مسنانة، بني مكادة، كاسابراطا، بوخالف، اكزناية وكل الأحياء الأخرى.")]),
+"en": dict(t="Grocery, meal, document and parcel delivery in Tangier",
+ d="Saha Express also delivers groceries, meals, documents and small parcels anywhere in Tangier, day and night. Easy ordering on WhatsApp, from 20 MAD.",
+ lead="Pharmacy runs are not our only service. Forgot something at the supermarket, want a meal from a restaurant that doesn't deliver, or need a document taken across Tangier? Send us a message and a rider will handle it.",
+ secs=[("What we deliver","Groceries, restaurant meals, documents and paperwork, keys, small parcels and gifts, baby care and para-pharmacy products. If it fits in our delivery box and it is legal, we can carry it."),
+       ("How to order","Write on WhatsApp what you need and where to pick it up: the shop name or address, then your address with a landmark. If we need to buy for you, we confirm the price first. You pay cash on delivery."),
+       ("Price and timing","Delivery starts at 20 MAD within Tangier. The final price depends on distance and we tell you before leaving. Most orders arrive in under an hour; at night it can take a little longer."),
+       ("Areas we cover","All of Tangier: Malabata, Branes, Iberia, Californie, Najma, Jbel Kbir, Marshan, Medina, Mesnana, Beni Makada, Casabarata, Boukhalef, Gzenaya and every other area.")]),
+}
+NAV = {"fr": ("Accueil", "Pharmacie de garde la nuit", "Courses et colis"),
+       "ar": ("الرئيسية", "صيدلية الحراسة ليلاً", "المشتريات والطرود"),
+       "en": ("Home", "Night pharmacy guide", "Groceries and parcels")}
+
 GSLUG = {"fr": "pharmacie-de-garde-tanger-nuit", "ar": "pharmacie-de-garde-tanger-nuit", "en": "pharmacie-de-garde-tanger-nuit"}
 
 CSS = """:root{--bg:#f4f7fb;--card:#fff;--ink:#0b1b33;--muted:#5a6b82;--line:#e3e9f2;--navy:#0a2342;--navy2:#123a6b;--g:#12b886;--g2:#0ca678;--gl:#e7f8f1;--wa:#25d366;
@@ -172,6 +201,8 @@ footer{background:var(--navy);color:#b9c7dc;padding:34px 0 110px;font-size:14px;
 .st-ic{height:220px;display:grid;place-items:center;font-size:84px;background:linear-gradient(135deg,var(--gl),#d5f3e7)}
 .st-b{padding:20px 22px 24px}.st::before{z-index:2;color:#ffffffcc;text-shadow:0 2px 10px #0006;top:10px}
 @media (max-width:760px){.hero-img{aspect-ratio:4/4.4;object-position:center 55%}.visual .card3{position:relative;inset:auto;width:auto;margin:-60px 14px 0}.hero{padding-bottom:40px}}
+
+.fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-bottom:14px}.fnav a{color:#cfe0f5;text-decoration:none;font-weight:600}
 """
 WAICON = '<svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>'
 
@@ -188,13 +219,15 @@ def page(lang, rel, title, desc, body, schema):
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"><style>{CSS}</style><script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script></head><body>
 <header><div class="w nav"><a class="logo" href="{home}"><i>🛵</i><span>Saha<b>Express</b></span></a><div class="nav-r"><nav class="langs">{langs}</nav><a class="ncall" href="tel:{TEL}">📞 {TEL_SHOW}</a></div></div></header>
 <main class="w">{body}</main>
-<footer><div class="w"><b>{e(L['foot'])}</b><br>WhatsApp / Tel: <a href="tel:{TEL}" dir="ltr">{TEL_SHOW}</a><br>{e(L['legal'])}<br>© Saha Express</div></footer>
+<footer><div class="w"><nav class="fnav"><a href="{root}{L['path']}">{e(NAV[lang][0])}</a><a href="{root}{L['path']}{GSLUG[lang]}/">{e(NAV[lang][1])}</a><a href="{root}{L['path']}{SSLUG}/">{e(NAV[lang][2])}</a></nav><b>{e(L['foot'])}</b><br>WhatsApp / Tel: <a href="tel:{TEL}" dir="ltr">{TEL_SHOW}</a><br>{e(L['legal'])}<br>© Saha Express</div></footer>
 <a class="float" href="https://wa.me/{WA}?text={quote(L['wa_hello'] + SRC)}" aria-label="WhatsApp">{WAICON}</a></body></html>"""
 
 def business(lang):
     L = T[lang]
     return {"@context":"https://schema.org","@type":"LocalBusiness","name":"Saha Express","description":L["desc"],"url":f"{URL}/{L['path']}","telephone":TEL,
-            "areaServed":{"@type":"City","name":"Tanger"},"address":{"@type":"PostalAddress","addressLocality":"Tanger","addressCountry":"MA"},
+            "areaServed":[{"@type":"City","name":"Tanger"}] + [{"@type":"Place","name":z + ", Tanger"} for z in ZONES[:12]],
+            "geo":{"@type":"GeoCoordinates","latitude":35.7595,"longitude":-5.834},"image":f"{URL}/img/night.webp",
+            "knowsLanguage":["fr","ar","en"],"currenciesAccepted":"MAD","paymentAccepted":"Cash","address":{"@type":"PostalAddress","addressLocality":"Tanger","addressCountry":"MA"},
             "openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},
             "priceRange":"20+ MAD"}
 
@@ -220,7 +253,7 @@ def home(lang):
 <div class="side"><div class="box safe"><b>🛡️ {e(L['rules_t'])}</b><ul>{''.join(f'<li>{e(r)}</li>' for r in L['rules'])}</ul></div><div class="box more"><b>📦 {e(L['more_t'])}</b><p style="margin:6px 0 0">{e(L['more'])}</p></div></div></div></section>
 <section><h2>{e(L['zones_t'])}</h2><div class="zones">{''.join(f'<span>📍 {e(z)}</span>' for z in ZONES)}</div><p class="hint" style="margin-top:12px">{e(L['zones_note'])}</p></section>
 <section class="faq"><h2>{e(L['faq_t'])}</h2>{''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q,a in L['faq'])}</section>
-<section><a class="guide" href="{GSLUG[lang]}/"><span>📖 {e(L['guide_t'])}</span><span>{e(L['guide_l'])} →</span></a></section>
+<section style="display:grid;gap:14px"><a class="guide" href="{GSLUG[lang]}/"><span>📖 {e(L['guide_t'])}</span><span>{e(L['guide_l'])} →</span></a><a class="guide" href="{SSLUG}/"><span>📦 {e(SERVICE[lang]['t'])}</span><span>{e(L['guide_l'])} →</span></a></section>
 <div class="cta-band"><h2>{e(L['band_t'])}</h2><p>{e(L['band_p'])}</p><a class="btn wa" style="background:#fff" href="https://wa.me/{WA}?text={quote(L['wa_hello'] + SRC)}">{WAICON.replace('#fff','#0b8f6a')} {e(L['cta'])}</a></div>
 <script>
 var f=document.getElementById('f'),L={json.dumps({k:L[k] for k in ('wa_hello','wa_name','wa_zone','wa_addr','wa_note','wa_photo')},ensure_ascii=False)};
@@ -237,6 +270,14 @@ def guide(lang):
     sch = {"@context":"https://schema.org","@type":"Article","headline":L["guide_t"],"inLanguage":lang,"publisher":{"@type":"Organization","name":"Saha Express"}}
     return page(lang, GSLUG[lang] + "/", L["guide_t"] + " | Saha Express", G[0][:155], body, sch)
 
+def service(lang):
+    L, S = T[lang], SERVICE[lang]
+    body = f'<article class="post"><h1>{e(S["t"])}</h1><p class="lead">{e(S["lead"])}</p>' + "".join(f"<h2>{e(h)}</h2><p>{e(p)}</p>" for h, p in S["secs"]) + \
+           f'<p><a class="btn wa" href="https://wa.me/{WA}?text={quote(S["t"] + " – " + L["wa_hello"].split(",")[0] + SRC)}">💬 WhatsApp</a></p></article>'
+    sch = {"@context": "https://schema.org", "@type": "Service", "name": S["t"], "serviceType": "Delivery", "inLanguage": lang,
+           "areaServed": {"@type": "City", "name": "Tanger"}, "provider": {"@type": "LocalBusiness", "name": "Saha Express", "telephone": TEL, "url": URL + "/"}}
+    return page(lang, SSLUG + "/", S["t"] + " | Saha Express", S["d"], body, sch)
+
 if OUT.exists(): shutil.rmtree(OUT)
 urls = []
 for lang, L in T.items():
@@ -244,9 +285,21 @@ for lang, L in T.items():
     (d / "index.html").write_text(home(lang), encoding="utf-8"); urls.append(f"{URL}/{L['path']}")
     g = d / GSLUG[lang]; g.mkdir(parents=True, exist_ok=True)
     (g / "index.html").write_text(guide(lang), encoding="utf-8"); urls.append(f"{URL}/{L['path']}{GSLUG[lang]}/")
+    sv = d / SSLUG; sv.mkdir(parents=True, exist_ok=True)
+    (sv / "index.html").write_text(service(lang), encoding="utf-8"); urls.append(f"{URL}/{L['path']}{SSLUG}/")
 shutil.copytree(Path(__file__).parent / "img", OUT / "img")
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {URL}/sitemap.xml\n")
-(OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + "".join(f"<url><loc>{u}</loc></url>" for u in urls) + "</urlset>")
+import datetime as _dt
+_today = _dt.date.today().isoformat()
+def _alts(u):
+    rel = u.replace(URL + "/", "")
+    for l in T:
+        if T[l]["path"] and rel.startswith(T[l]["path"]):
+            rel = rel[len(T[l]["path"]):]
+    return "".join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{URL}/{T[l]["path"]}{rel}"/>' for l in T)
+(OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' +
+    "".join(f"<url><loc>{u}</loc><lastmod>{_today}</lastmod>{_alts(u)}</url>" for u in urls) + "</urlset>")
+(OUT / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY)
 (OUT / "CNAME").write_text("www.sahaexpresstanger.com\n")
 (OUT / ".nojekyll").write_text("")
 (OUT / "google1a66cd67b82a0599.html").write_text("google-site-verification: google1a66cd67b82a0599.html")
