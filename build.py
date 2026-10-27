@@ -5,7 +5,7 @@ from urllib.parse import quote
 from pathlib import Path
 OUT = Path(__file__).parent / "docs"
 URL = "https://www.sahaexpresstanger.com"
-WA = "212689302303"; TEL = "+212689302303"; TEL_SHOW = "06 89 30 23 03"
+WA = "212689302303"; SRC = "\n\n🌐 sahaexpresstanger.com"; TEL = "+212689302303"; TEL_SHOW = "06 89 30 23 03"
 e = html.escape
 ZONES = ["Malabata", "Branes", "Iberia", "Californie", "Najma", "Jbel Kbir", "Marshan", "Médina", "Kasbah", "Centre-ville",
          "Boulevard Pasteur", "Val Fleuri", "Mesnana", "Achakar", "Beni Makada", "Casabarata", "Dradeb", "Mghogha",
@@ -189,7 +189,7 @@ def page(lang, rel, title, desc, body, schema):
 <header><div class="w nav"><a class="logo" href="{home}"><i>🛵</i><span>Saha<b>Express</b></span></a><div class="nav-r"><nav class="langs">{langs}</nav><a class="ncall" href="tel:{TEL}">📞 {TEL_SHOW}</a></div></div></header>
 <main class="w">{body}</main>
 <footer><div class="w"><b>{e(L['foot'])}</b><br>WhatsApp / Tel: <a href="tel:{TEL}" dir="ltr">{TEL_SHOW}</a><br>{e(L['legal'])}<br>© Saha Express</div></footer>
-<a class="float" href="https://wa.me/{WA}" aria-label="WhatsApp">{WAICON}</a></body></html>"""
+<a class="float" href="https://wa.me/{WA}?text={quote(L['wa_hello'] + SRC)}" aria-label="WhatsApp">{WAICON}</a></body></html>"""
 
 def business(lang):
     L = T[lang]
@@ -204,7 +204,7 @@ def home(lang):
     opts = "".join(f"<option>{e(z)}</option>" for z in ZONES)
     body = f"""
 <div class="heroW"><div class="hero"><div><span class="kicker"><i></i>{e(L['kicker'])}</span><h1>{L['h1']}</h1><p class="lead">{e(L['lead'])}</p>
-<div class="acts"><a class="btn wa" href="https://wa.me/{WA}?text={quote(L['wa_hello'])}">{WAICON.replace('#fff','#05391c')} {e(L['cta'])}</a><a class="btn ghost" href="tel:{TEL}">📞 {e(L['call'])}</a></div>
+<div class="acts"><a class="btn wa" href="https://wa.me/{WA}?text={quote(L['wa_hello'] + SRC)}">{WAICON.replace('#fff','#05391c')} {e(L['cta'])}</a><a class="btn ghost" href="tel:{TEL}">📞 {e(L['call'])}</a></div>
 <div class="trust">{''.join(f'<span><b>{c.split(" ",1)[0]}</b>{e(c.split(" ",1)[1])}</span>' for c in L['chips'])}</div></div>
 <div class="visual"><img class="hero-img" src="{IMG}night.webp" width="760" height="1352" alt="{e(L['alt_night'])}" fetchpriority="high">
 <div class="card3"><div class="top"><span class="badge">● {e(L['open'])}</span></div>
@@ -221,10 +221,10 @@ def home(lang):
 <section><h2>{e(L['zones_t'])}</h2><div class="zones">{''.join(f'<span>📍 {e(z)}</span>' for z in ZONES)}</div><p class="hint" style="margin-top:12px">{e(L['zones_note'])}</p></section>
 <section class="faq"><h2>{e(L['faq_t'])}</h2>{''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q,a in L['faq'])}</section>
 <section><a class="guide" href="{GSLUG[lang]}/"><span>📖 {e(L['guide_t'])}</span><span>{e(L['guide_l'])} →</span></a></section>
-<div class="cta-band"><h2>{e(L['band_t'])}</h2><p>{e(L['band_p'])}</p><a class="btn wa" style="background:#fff" href="https://wa.me/{WA}?text={quote(L['wa_hello'])}">{WAICON.replace('#fff','#0b8f6a')} {e(L['cta'])}</a></div>
+<div class="cta-band"><h2>{e(L['band_t'])}</h2><p>{e(L['band_p'])}</p><a class="btn wa" style="background:#fff" href="https://wa.me/{WA}?text={quote(L['wa_hello'] + SRC)}">{WAICON.replace('#fff','#0b8f6a')} {e(L['cta'])}</a></div>
 <script>
 var f=document.getElementById('f'),L={json.dumps({k:L[k] for k in ('wa_hello','wa_name','wa_zone','wa_addr','wa_note','wa_photo')},ensure_ascii=False)};
-f.onsubmit=function(ev){{ev.preventDefault();var t=L.wa_hello+'\\n'+L.wa_name+': '+f.n.value+'\\n'+L.wa_zone+': '+f.z.value+'\\n'+L.wa_addr+': '+f.a.value+(f.m.value?'\\n'+L.wa_note+': '+f.m.value:'')+'\\n'+L.wa_photo;
+f.onsubmit=function(ev){{ev.preventDefault();var t=L.wa_hello+'\\n'+L.wa_name+': '+f.n.value+'\\n'+L.wa_zone+': '+f.z.value+'\\n'+L.wa_addr+': '+f.a.value+(f.m.value?'\\n'+L.wa_note+': '+f.m.value:'')+'\\n'+L.wa_photo+{json.dumps(SRC)};
 window.open('https://wa.me/{WA}?text='+encodeURIComponent(t),'_blank');}};
 </script>"""
     faq = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in L['faq']]}
@@ -233,7 +233,7 @@ window.open('https://wa.me/{WA}?text='+encodeURIComponent(t),'_blank');}};
 def guide(lang):
     L, G = T[lang], GUIDE[lang]
     body = f'<article class="post"><h1>{e(L["guide_t"])}</h1><p class="lead">{e(G[0])}</p>' + "".join(f"<h2>{e(h)}</h2><p>{e(p)}</p>" for h,p in G[1:]) + \
-           f'<p><a class="btn wa" href="https://wa.me/{WA}?text={quote(L["wa_hello"])}">📄 {e(L["cta"])}</a></p></article>'
+           f'<p><a class="btn wa" href="https://wa.me/{WA}?text={quote(L["wa_hello"] + SRC)}">📄 {e(L["cta"])}</a></p></article>'
     sch = {"@context":"https://schema.org","@type":"Article","headline":L["guide_t"],"inLanguage":lang,"publisher":{"@type":"Organization","name":"Saha Express"}}
     return page(lang, GSLUG[lang] + "/", L["guide_t"] + " | Saha Express", G[0][:155], body, sch)
 
