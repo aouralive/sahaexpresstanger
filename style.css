@@ -80,3 +80,4 @@ footer{background:var(--navy);color:#b9c7dc;padding:34px 0 110px;font-size:14px;
 @media (max-width:760px){.hero-img{aspect-ratio:4/4.4;object-position:center 55%}.visual .card3{position:relative;inset:auto;width:auto;margin:-60px 14px 0}.hero{padding-bottom:40px}}
 
 .fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-bottom:14px}.fnav a{color:#cfe0f5;text-decoration:none;font-weight:600}
+@media (max-width:420px){.nav{gap:8px}.logo{font-size:18px;gap:8px}.logo i{width:32px;height:32px}.langs{gap:2px}.langs a{font-size:12px;padding:4px 6px}}

@@ -203,6 +203,7 @@ footer{background:var(--navy);color:#b9c7dc;padding:34px 0 110px;font-size:14px;
 @media (max-width:760px){.hero-img{aspect-ratio:4/4.4;object-position:center 55%}.visual .card3{position:relative;inset:auto;width:auto;margin:-60px 14px 0}.hero{padding-bottom:40px}}
 
 .fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-bottom:14px}.fnav a{color:#cfe0f5;text-decoration:none;font-weight:600}
+@media (max-width:420px){.nav{gap:8px}.logo{font-size:18px;gap:8px}.logo i{width:32px;height:32px}.langs{gap:2px}.langs a{font-size:12px;padding:4px 6px}}
 """
 WAICON = '<svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>'
 
