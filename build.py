@@ -150,6 +150,8 @@ PRIVACY = {
        ("Your rights","Under Law 09-08 you can ask to access, correct or delete your data, and object to its use. Message us on WhatsApp or call us. You can also contact the CNDP, Morocco's data protection authority.")]),
 }
 
+from extra_pages import EXTRA
+
 GSLUG = {"fr": "pharmacie-de-garde-tanger-nuit", "ar": "pharmacie-de-garde-tanger-nuit", "en": "pharmacie-de-garde-tanger-nuit"}
 
 CSS = """:root{--bg:#f4f7fb;--card:#fff;--ink:#0b1b33;--muted:#5a6b82;--line:#e3e9f2;--navy:#0a2342;--navy2:#123a6b;--g:#12b886;--g2:#0ca678;--gl:#e7f8f1;--wa:#25d366;
@@ -251,7 +253,7 @@ def page(lang, rel, title, desc, body, schema):
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"><style>{CSS}</style><script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script></head><body>
 <header><div class="w nav"><a class="logo" href="{home}"><i>🛵</i><span>Saha<b>Express</b></span></a><div class="nav-r"><nav class="langs">{langs}</nav><a class="ncall" href="tel:{TEL}">📞 {TEL_SHOW}</a></div></div></header>
 <main class="w">{body}</main>
-<footer><div class="w"><nav class="fnav"><a href="{root}{L['path']}">{e(NAV[lang][0])}</a><a href="{root}{L['path']}{GSLUG[lang]}/">{e(NAV[lang][1])}</a><a href="{root}{L['path']}{SSLUG}/">{e(NAV[lang][2])}</a><a href="{root}{L['path']}{PSLUG}/">{e(PRIVACY[lang]['nav'])}</a></nav><b>{e(L['foot'])}</b><br>WhatsApp / Tel: <a href="tel:{TEL}" dir="ltr">{TEL_SHOW}</a><br>{e(L['legal'])}<br>© Saha Express</div></footer>
+<footer><div class="w"><nav class="fnav"><a href="{root}{L['path']}">{e(NAV[lang][0])}</a><a href="{root}{L['path']}{GSLUG[lang]}/">{e(NAV[lang][1])}</a><a href="{root}{L['path']}{SSLUG}/">{e(NAV[lang][2])}</a>{''.join(f'<a href="{root}{L["path"]}{X["slug"]}/">{e(X[lang]["t"].split(":")[0].split(" à ")[0].split(" في ")[0].split(" in ")[0])}</a>' for X in EXTRA)}<a href="{root}{L['path']}{PSLUG}/">{e(PRIVACY[lang]['nav'])}</a></nav><b>{e(L['foot'])}</b><br>WhatsApp / Tel: <a href="tel:{TEL}" dir="ltr">{TEL_SHOW}</a><br>{e(L['legal'])}<br>© Saha Express</div></footer>
 <a class="float" href="https://wa.me/{WA}?text={quote(L['wa_hello'] + SRC)}" aria-label="WhatsApp">{WAICON}</a></body></html>"""
 
 def business(lang):
@@ -285,7 +287,7 @@ def home(lang):
 <div class="side"><div class="box safe"><b>🛡️ {e(L['rules_t'])}</b><ul>{''.join(f'<li>{e(r)}</li>' for r in L['rules'])}</ul></div><div class="box more"><b>📦 {e(L['more_t'])}</b><p style="margin:6px 0 0">{e(L['more'])}</p></div></div></div></section>
 <section><h2>{e(L['zones_t'])}</h2><div class="zones">{''.join(f'<span>📍 {e(z)}</span>' for z in ZONES)}</div><p class="hint" style="margin-top:12px">{e(L['zones_note'])}</p></section>
 <section class="faq"><h2>{e(L['faq_t'])}</h2>{''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q,a in L['faq'])}</section>
-<section style="display:grid;gap:14px"><a class="guide" href="{GSLUG[lang]}/"><span>📖 {e(L['guide_t'])}</span><span>{e(L['guide_l'])} →</span></a><a class="guide" href="{SSLUG}/"><span>📦 {e(SERVICE[lang]['t'])}</span><span>{e(L['guide_l'])} →</span></a></section>
+<section style="display:grid;gap:14px"><a class="guide" href="{GSLUG[lang]}/"><span>📖 {e(L['guide_t'])}</span><span>{e(L['guide_l'])} →</span></a><a class="guide" href="{SSLUG}/"><span>📦 {e(SERVICE[lang]['t'])}</span><span>{e(L['guide_l'])} →</span></a>{''.join(f'<a class="guide" href="{X["slug"]}/"><span>{X["ico"]} {e(X[lang]["t"])}</span><span>{e(L["guide_l"])} →</span></a>' for X in EXTRA)}</section>
 <div class="cta-band"><h2>{e(L['band_t'])}</h2><p>{e(L['band_p'])}</p><a class="btn wa" style="background:#fff" href="https://wa.me/{WA}?text={quote(L['wa_hello'] + SRC)}">{WAICON.replace('#fff','#0b8f6a')} {e(L['cta'])}</a></div>
 <script>
 var f=document.getElementById('f'),L={json.dumps({k:L[k] for k in ('wa_hello','wa_name','wa_zone','wa_addr','wa_note','wa_photo')},ensure_ascii=False)};
@@ -310,6 +312,17 @@ def service(lang):
            "areaServed": {"@type": "City", "name": "Tanger"}, "provider": {"@type": "LocalBusiness", "name": "Saha Express", "telephone": TEL, "url": URL + "/"}}
     return page(lang, SSLUG + "/", S["t"] + " | Saha Express", S["d"], body, sch)
 
+def extra(lang, X):
+    L, P = T[lang], X[lang]
+    body = f'<article class="post"><h1>{e(P["t"])}</h1><p class="lead">{e(P["lead"])}</p>' + "".join(f"<h2>{e(h)}</h2><p>{e(p)}</p>" for h, p in P["secs"]) + \
+           f'<h2>{e(L["faq_t"])}</h2><div class="faq">' + "".join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in P["faq"]) + '</div>' + \
+           f'<p><a class="btn wa" href="https://wa.me/{WA}?text={quote(P["t"] + " – " + L["wa_hello"].split(",")[0] + SRC)}">💬 WhatsApp</a> &nbsp; <a href="tel:{TEL}" dir="ltr">📞 {TEL_SHOW}</a></p>' + \
+           '<section style="display:grid;gap:12px;padding-top:24px">' + "".join(f'<a class="guide" href="../{Y["slug"]}/"><span>{Y["ico"]} {e(Y[lang]["t"])}</span><span>{e(L["guide_l"])} →</span></a>' for Y in EXTRA if Y is not X) + '</section></article>'
+    sch = [{"@context": "https://schema.org", "@type": "Service", "name": P["t"], "description": P["d"], "serviceType": "Delivery", "inLanguage": lang,
+           "areaServed": {"@type": "City", "name": "Tanger"}, "provider": {"@type": "LocalBusiness", "name": "Saha Express", "telephone": TEL, "url": URL + "/"}},
+           {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in P["faq"]]}]
+    return page(lang, X["slug"] + "/", P["t"] + " | Saha Express", P["d"], body, sch)
+
 def privacy(lang):
     L, P = T[lang], PRIVACY[lang]
     body = f'<article class="post"><h1>{e(P["t"])}</h1><p class="lead">{e(P["lead"])}</p>' + "".join(f"<h2>{e(h)}</h2><p>{e(p)}</p>" for h, p in P["secs"]) + \
@@ -325,6 +338,9 @@ for lang, L in T.items():
     (g / "index.html").write_text(guide(lang), encoding="utf-8"); urls.append(f"{URL}/{L['path']}{GSLUG[lang]}/")
     sv = d / SSLUG; sv.mkdir(parents=True, exist_ok=True)
     (sv / "index.html").write_text(service(lang), encoding="utf-8"); urls.append(f"{URL}/{L['path']}{SSLUG}/")
+    for X in EXTRA:
+        xd = d / X["slug"]; xd.mkdir(parents=True, exist_ok=True)
+        (xd / "index.html").write_text(extra(lang, X), encoding="utf-8"); urls.append(f"{URL}/{L['path']}{X['slug']}/")
     pv = d / PSLUG; pv.mkdir(parents=True, exist_ok=True)
     (pv / "index.html").write_text(privacy(lang), encoding="utf-8"); urls.append(f"{URL}/{L['path']}{PSLUG}/")
 shutil.copytree(Path(__file__).parent / "img", OUT / "img")
